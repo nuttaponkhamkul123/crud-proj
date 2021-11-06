@@ -1,5 +1,5 @@
-const mongoose = required ('mongoose');
-const schema = mongoost.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 
 let Parcel = new Schema({
@@ -20,4 +20,4 @@ let Parcel = new Schema({
     collection : 'parcels'
 })
 
-module.export = mongoose.model('Parcel',Parcel);
+module.exports = mongoose.model('Parcel',Parcel);

@@ -1,7 +1,5 @@
 const express = require('express');
 const app = express();
-
-
 const parcelRoute = express.Router();
 let Parcel = require('../model/Parcel');
 
@@ -19,8 +17,10 @@ parcelRoute.route('add-parcel').post((req,res,next) =>{
 
 parcelRoute.route('/').get((req,res) =>{
     Parcel.find((err,data) => {
-        if(err) return next(err);
-        else res.json.data;
+        if(err){
+            return next(err);
+        } 
+        else res.json(data);
     })
 })
 
@@ -58,4 +58,4 @@ parcelRoute.route('/delete-parcel/:id').delete((req,res,next) =>{
     })
 })
 
-module.export = parcelRoute;
+module.exports = parcelRoute;
