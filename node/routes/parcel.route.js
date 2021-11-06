@@ -5,7 +5,8 @@ let Parcel = require('../model/Parcel');
 
 
 //Add Parcel
-parcelRoute.route('add-parcel').post((req,res,next) =>{
+parcelRoute.route('/add-parcel').post((req,res,next) =>{
+    console.log("test")
     Parcel.create(req.body, (err,data) => {
         if(err) return next(err);
         else res.json(data)
@@ -16,6 +17,7 @@ parcelRoute.route('add-parcel').post((req,res,next) =>{
 //fetch all Parcels
 
 parcelRoute.route('/').get((req,res) =>{
+
     Parcel.find((err,data) => {
         if(err){
             return next(err);

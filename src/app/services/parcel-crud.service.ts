@@ -9,6 +9,7 @@ export class Parcel {
   name !: String;
   publicName !: String;
   measure !: String;
+  quantity !: Number;
 
 }
 @Injectable({
@@ -20,7 +21,9 @@ export class ParcelCrudService {
 
   constructor(private httpClient : HttpClient) { }
   //Add Parcel 
+
   addParcel(obj : Parcel) : Observable<any> {
+        console.log('adding Parcel : ' + obj)
         let API_URL = `${this.REST_API}/add-parcel`;
         return this.httpClient.post(API_URL,obj)
           .pipe(
