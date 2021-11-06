@@ -1,11 +1,34 @@
 ul{
     position:absolute;
     height:100%;
-    width:10%;
+    width:20%;
+    padding-left:0;
     
 }
 
 ul li{
     list-style: none;
     text-decoration: none;
+    padding-bottom:2rem;
+    padding-top:2rem;
+    font-weight: bolder;
+}
+
+ul li:hover {
+    background-color:rgb(175, 185, 201);
+    cursor:pointer;
+}
+.is-active > li{
+    background-color:rgb(37, 97, 194);
+}
+
+.sidebar{
+    background-color: rgba(18, 9, 9,1);
+    padding-top : 3rem;
+    text-align:center;
+}
+
+.sidebar a {
+    text-decoration:none;
+    color:white;
 }

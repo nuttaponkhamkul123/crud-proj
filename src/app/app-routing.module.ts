@@ -13,7 +13,8 @@ const routes: Routes = [
   },
   {
     path : 'parcel-list',
-    component : ParcelListComponent
+    component : ParcelListComponent,
+
   },
   {
     path : 'add-parcel',
