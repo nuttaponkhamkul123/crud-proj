@@ -13,7 +13,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(mongoDb.db, {
     useNewUrlParser : true,
 }).then (() => {
-    console.log("connected");
+    console.log("mongo connected");
 }, err=>{
     console.log("Error to connect : " + err)
 })
@@ -23,7 +23,7 @@ const parcelRoute = require('./routes/parcel.route')
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended:true
+    extended:false
 }))
 app.use(cors());
 

@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 
 let Parcel = new Schema({
+    _id :{
+        type : String
+    },
     name : {
         type : String
     },

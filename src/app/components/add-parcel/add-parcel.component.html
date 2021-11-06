@@ -1,9 +1,11 @@
-<form action="">  
+<form [formGroup] = "addParcelForm" (ngSubmit) = "onSubmit()">  
     <label for="add-parcel-name-ipt">Parcel Name</label><br>
-    <input class="form-control" type="text" name = "parcel-name" id = "add-parcel-name-ipt"> <br> 
+    <input class="form-control" type="text" formControlName = "parcelName" id = "add-parcel-name-ipt"> <br> 
     <label for="add-public-name-ipt">Parcel Public Name</label><br>
-    <input class="form-control" type="text" name = "parcel-name" id = "add-public-name-ipt">  <br>
+    <input class="form-control" type="text" formControlName = "publicParcelName" id = "add-public-name-ipt">  <br>
     <label for="add-measure-name-ipt">Parcel Measure Name</label><br>
-    <input class="form-control" type="text" name = "parcel-name" id = "add-measure-name-ipt"> <br> 
-    <a href="#" class="btn btn-primary">Add</a>
+    <input class="form-control" type="text" formControlName = "measureName" id = "add-measure-name-ipt"> <br> 
+    <label for="add-public-name-ipt">Quantity</label><br>
+    <input class="form-control" type="number" formControlName = "quantity" id = "quantity-ipt"> <br> 
+    <button class="btn btn-primary" [disabled] = "!addParcelForm.valid" >Add</button>
 </form>
