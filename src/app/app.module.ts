@@ -9,13 +9,15 @@ import { ParcelListComponent } from './components/parcel-list/parcel-list.compon
 
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddParcelComponent,
     ParcelDetailComponent,
-    ParcelListComponent
+    ParcelListComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
