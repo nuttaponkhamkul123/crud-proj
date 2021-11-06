@@ -11,12 +11,14 @@ export class ParcelListComponent implements OnInit {
   constructor(private pcs : ParcelCrudService) { }
 
   ngOnInit(): void {
+    //get all item from db
     this.pcs.fetchParcels().subscribe((res) => 
     this.allItems = res)
   }
   
   deleteParcel(id : string){
     this.pcs.deleteParcel(id).subscribe((res) => res)
+    //delete parcel and refetch data
     this.pcs.fetchParcels().subscribe((res) => 
         this.allItems = res)
   }
