@@ -1,1 +1,32 @@
-<p>parcel-list works!</p>
+<div >
+    <!-- <div>
+        Name : {{parcel.name}}
+        Public Name : {{parcel.publicName}}
+        Measure : {{parcel.measure}}
+        Quantity : {{parcel.quantity}}
+    </div> -->
+
+    <table class="table">
+        <thead class = "table-dark">
+            <tr>
+                <th>ชื่อ</th>
+                <th>ชื่อเป็นทางการ</th>
+                <th>หน่วยวัด</th>
+                <th>จำนวน</th>
+                <th>เครื่องมือ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = 'let parcel of allItems'>
+                <td>{{parcel.name}}</td>
+                <td>{{parcel.publicName}}</td>
+                <td>{{parcel.measure}}</td>
+                <td>{{parcel.quantity}}</td>
+                <td><a href="javascript:void(0)" (click) = "deleteParcel(parcel._id)">ลบ</a>&nbsp;<a href="#" >แก้ไข</a></td>
+            </tr>
+        </tbody>
+            
+        
+    </table>
+
+</div>

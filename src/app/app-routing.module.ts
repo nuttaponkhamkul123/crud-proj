@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path : '',
     pathMatch : 'full',
-    redirectTo : 'add-parcel'
+    redirectTo : 'parcel-list'
   },
   {
     path : 'parcel-list',

@@ -31,8 +31,12 @@ export class ParcelCrudService {
           )
   }
   //fetch all parcels
-  fetchParcels(){
+  fetchParcels() : Observable<any>{
+    
     return this.httpClient.get(`${this.REST_API}`)
+    
+      
+    
   }
 
   //get book specifically 
@@ -59,7 +63,7 @@ export class ParcelCrudService {
 
   //Delete Parcel from id
   deleteParcel(id : any ) : Observable<any>{
-    return this.httpClient.put(`${this.REST_API}/delete-parcel/${id}` ,{
+    return this.httpClient.delete(`${this.REST_API}/delete-parcel/${id}` ,{
       headers : this.httpHeaders
     }).pipe(
       catchError(this.errorHandler)

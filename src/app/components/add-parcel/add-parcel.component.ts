@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,NgZone } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Parcel, ParcelCrudService } from '../../services/parcel-crud.service';
+import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
 @Component({
@@ -12,7 +13,7 @@ export class AddParcelComponent implements OnInit {
   
     
   constructor(private parcelCrudService : ParcelCrudService,
-    private formBuilder : FormBuilder) { 
+    private formBuilder : FormBuilder,private router : Router) { 
      
   }
   //all the field is required 
@@ -35,6 +36,7 @@ export class AddParcelComponent implements OnInit {
     
     this.parcelCrudService.addParcel(obj).subscribe(() => {
       console.log("added parcel")
+      this.router.navigateByUrl('/');
     });
   }
 
