@@ -22,7 +22,7 @@
                 <td>{{parcel.publicName}}</td>
                 <td>{{parcel.measure}}</td>
                 <td>{{parcel.quantity}}</td>
-                <td><a href="javascript:void(0)" (click) = "deleteParcel(parcel._id)">ลบ</a>&nbsp;<a href="#" >แก้ไข</a></td>
+                <td><a href="javascript:void(0)" (click) = "deleteParcel(parcel._id)">ลบ</a>&nbsp;<a href="javascript:void(0)" (click) = "editParcel({ _id : parcel._id , parcelName :parcel.name, publicParcelName : parcel.publicName, measureName : parcel.measure })" >แก้ไข</a></td>
             </tr>
         </tbody>
             

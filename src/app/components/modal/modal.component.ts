@@ -86,4 +86,8 @@ export class ModalComponent implements OnInit {
     
   }
 
+  unsub(){
+    this.transferData.unsub();
+  }
+
 }

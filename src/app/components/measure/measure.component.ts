@@ -43,6 +43,10 @@ export class MeasureComponent implements OnInit {
       this.transferData.triggerModal({id : id});
     }
   }
+
+  unsub(){
+    this.transferData.unsub();
+  }
   
   
 }

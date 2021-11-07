@@ -3,7 +3,15 @@ const app = express();
 const measuresRoute = express.Router();
 let Measures = require('../model/Measures');
 
+measuresRoute.route('/').get((req,res) =>{
 
+    Measures.find((err,data) => {
+        if(err){
+            return next(err);
+        } 
+        else res.json(data);
+    })
+})
 //Add Measures
 measuresRoute.route('/add-measure').post((req,res,next) =>{
     console.log("test")
