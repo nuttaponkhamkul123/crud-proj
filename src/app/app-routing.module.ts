@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddParcelComponent } from './components/add-parcel/add-parcel.component';
 import { ParcelDetailComponent } from './components/parcel-detail/parcel-detail.component';
 import { ParcelListComponent } from './components/parcel-list/parcel-list.component';
+import { MeasureComponent } from  './components/measure/measure.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path : 'edit-parcel/:id',
     component : ParcelDetailComponent
+  },
+  {
+    path : 'measure',
+    pathMatch : 'full',
+    component : MeasureComponent
   }
 ];
 

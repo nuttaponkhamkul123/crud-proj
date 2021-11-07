@@ -1,0 +1,41 @@
+<!-- start add modal -->
+<ng-template #measModal let-modal >
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Measure</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup] = "addMeasureGroup" action="" class="form-group">
+        <label for="measureName">Measure Name </label>
+        <input id="measureName"  class = "form-control"type="text" formControlName="measureName">
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('');saveMeasure()">Save</button>
+      <button type="button" class="btn btn-default btn-outline-dark" (click)="modal.close('Closed without Save');">Close</button>
+    </div>
+  </ng-template>
+<!-- end add modal -->
+
+<!-- start edit modal -->
+<ng-template #emModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edit Measure</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup] = "addMeasureGroup" action="" class="form-group">
+        <label for="measureName">Measure Name </label>
+        <input id="measureName" class = "form-control"type="text" formControlName="measureName">
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('');saveMeasure()">Save</button>
+      <button type="button" class="btn btn-default btn-outline-dark" (click)="modal.close('Closed without Save');">Close</button>
+    </div>
+  </ng-template>
+<!-- end edit modal -->

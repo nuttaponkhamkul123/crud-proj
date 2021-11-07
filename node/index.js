@@ -19,6 +19,7 @@ mongoose.connect(mongoDb.db, {
 })
 
 const parcelRoute = require('./routes/parcel.route')
+const measureRoute = require('./routes/measures.route')
 
 const app = express();
 app.use(bodyParser.json());
@@ -30,15 +31,19 @@ app.use(cors());
 //static page
 app.use(express.static(path.join(__dirname,'static/')))
 
+//if user enter in localhost:8000 user will get plain page with big test text
 app.get('/' ,(req,res)=>{
     res.sendFile(path.join(__dirname, 'static/index.html'))
 })
 
 //get parcel api 
 app.use('/api' , parcelRoute);
+app.use('/api/measures' , measureRoute);
 
+//set port as 8000
 const port = process.env.PORT || 8000;
 
+//port listening
 app.listen(port, ()=>{
     console.log("Listening Port : " + port)
 })
@@ -47,7 +52,6 @@ app.listen(port, ()=>{
 
 
 //error handler
-
 app.use((req,res,next) => {
     next(createError(404));
 })

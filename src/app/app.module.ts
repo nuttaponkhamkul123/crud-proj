@@ -10,6 +10,10 @@ import { ParcelListComponent } from './components/parcel-list/parcel-list.compon
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { MeasureComponent } from './components/measure/measure.component';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +21,17 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     AddParcelComponent,
     ParcelDetailComponent,
     ParcelListComponent,
-    SidebarComponent
+    SidebarComponent,
+    MeasureComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

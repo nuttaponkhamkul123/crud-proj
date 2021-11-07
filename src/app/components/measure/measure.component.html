@@ -1,0 +1,21 @@
+<div>
+  
+  <button type="button" class="btn btn-primary" data-toggle="modal" (click) = "open();$event.preventDefault()">Add</button>
+    <table class="table">
+        <thead class = "thead-dark">
+            <tr>
+                <th>ลำดับ</th>
+                <th>หน่วยวัด</th>
+                <th>เครื่องมือ</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor= "let elem of measures; index as i">
+                <td>{{i+1}}</td>
+                <td>{{elem.measureName}}</td>
+                <td><a href="javascript:void(0)" data-toggle="modal" data-target="#emModal" (click) = "open(elem._id);">Edit</a>&nbsp;<a href="javascript:void(0)">delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
