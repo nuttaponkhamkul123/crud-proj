@@ -70,8 +70,8 @@ export class ModalComponent implements OnInit {
         _id : this.currentMid,
         measureName : mName
       }
-      
-      this.parcelCrudService.updateMeasure(this.currentEditMeasure._id, this.currentEditMeasure.measureName).subscribe((res) => {});
+      console.log(this.currentEditMeasure)
+      this.parcelCrudService.updateMeasure(this.currentEditMeasure._id, {'measureName' : this.currentEditMeasure.measureName}).subscribe((res) => {});
       
     }else{
       console.log("ud val")
@@ -80,7 +80,9 @@ export class ModalComponent implements OnInit {
         measureName : this.addMeasureGroup.value.measureName
       }
       
-      this.parcelCrudService.addMeasure(this.currentEditMeasure).subscribe((res) => {});
+      this.parcelCrudService.addMeasure(this.currentEditMeasure).subscribe((res) => {
+        
+      });
     }
     
     
