@@ -15,20 +15,32 @@ const routes: Routes = [
   {
     path : 'parcel-list',
     component : ParcelListComponent,
+    data :{
+      title : "Parcel List"
+    }
 
   },
   {
     path : 'add-parcel',
-    component : AddParcelComponent
+    component : AddParcelComponent,
+    data :{
+      title : "Add Parcel"
+    }
   },
   {
     path : 'edit-parcel/:id',
-    component : ParcelDetailComponent
+    component : ParcelDetailComponent,
+    data :{
+      title : "Edit Parcel"
+    }
   },
   {
     path : 'measure',
     pathMatch : 'full',
-    component : MeasureComponent
+    component : MeasureComponent,
+    data :{
+      title : "Measure List"
+    }
   }
 ];
 

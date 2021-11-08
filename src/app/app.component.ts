@@ -1,8 +1,9 @@
 import { Component,OnInit } from '@angular/core';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { Router,NavigationEnd,Event } from '@angular/router';
+import { Router,NavigationEnd,Event, ActivatedRoute, RoutesRecognized } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription  } from 'rxjs';
+import { map } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,15 +12,15 @@ import { Subscription  } from 'rxjs';
 export class AppComponent implements OnInit{
   title = 'crud-proj';
   public routerName! : String
-  constructor(private router : Router,){
-    this.router.events.subscribe((event:Event) => {
-      if(event instanceof NavigationEnd ){
-        console.log(event.url);
-        this.routerName! = event.url
+  constructor(private router : Router,private route : ActivatedRoute){
+    router.events.subscribe(event => {
+      if (event instanceof RoutesRecognized) {
+        let route = event.state.root.firstChild;
+        this.routerName! =  route?.data['title'];
       }
     });
   }
   ngOnInit() : void{
-      console.log(this.router.url)
+    
   }
 }

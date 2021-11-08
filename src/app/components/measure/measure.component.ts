@@ -35,7 +35,7 @@ export class MeasureComponent implements OnInit {
       this.measures! = res;
     })
     this.transferData.getrefreshModal().subscribe((res)=>{
-      console.log(res)
+      
     });
     
   }
