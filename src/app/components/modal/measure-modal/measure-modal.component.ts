@@ -11,11 +11,11 @@ import { NgZone } from '@angular/core';
 
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  selector: 'app-measure-modal',
+  templateUrl: './measure-modal.component.html',
+  styleUrls: ['./measure-modal.component.css']
 })
-export class ModalComponent implements OnInit {
+export class MeasureModalComponent implements OnInit {
   @ViewChild('emModal') editModal : any;
   @ViewChild('measModal') addModal : any;
 

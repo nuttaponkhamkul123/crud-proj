@@ -11,9 +11,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MeasureComponent } from './components/measure/measure.component';
-
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from './components/modal/modal/modal.component';
+import { MeasureModalComponent } from './components/modal/measure-modal/measure-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,7 @@ import { ModalComponent } from './components/modal/modal/modal.component';
     ParcelListComponent,
     SidebarComponent,
     MeasureComponent,
-    ModalComponent
+    MeasureModalComponent
   ],
   imports: [
     BrowserModule,
