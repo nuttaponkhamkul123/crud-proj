@@ -30,33 +30,40 @@ measuresRoute.route('/fetch-measures').get((req,res) =>{
         if(err){
             return next(err);
         } 
-        else res.json(data);
+        else {
+            res.json(data)
+            
+        }
     })
 })
 
 //get specific Measures
 
 measuresRoute.route('/fetch-measure/:id').get((req,res) =>{
-    
+    console.log('fetch')
     Measures.findById(req.params.id,(err,data) => {
         if(err) return next(err);
-        else res.json(data);
+        else {
+            res.json(data)
+            
+        }
         
     })
 })
 
 //update Measures data
 measuresRoute.route('/update-measure/:id').put((req,res,next) =>{
+    console.log("update")
     Measures.findByIdAndUpdate(req.params.id,{
         $set : req.body
-    }, (err,data) =>{
+    },{new : true}, (err,data) =>{
         
         if(err) {
             return next(err);
         }else{
             
             res.json(data);
-            console.log("Measure Updated");
+            console.log(req.body)
         }
     })
 })

@@ -21,12 +21,21 @@ mongoose.connect(mongoDb.db, {
 const parcelRoute = require('./routes/parcel.route')
 const measureRoute = require('./routes/measures.route')
 
+
 const app = express();
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended:false
 }))
-app.use(cors());
+
 
 //static page
 app.use(express.static(path.join(__dirname,'static/')))
@@ -37,8 +46,9 @@ app.get('/' ,(req,res)=>{
 
 
 //get parcel api 
+
 app.use('/api' , parcelRoute);
-app.use('/api/measures', measureRoute);
+app.use('/api/measures',cors(), measureRoute);
 
 //set port as 8000
 const port = process.env.PORT || 8000;

@@ -25,7 +25,7 @@ export class PassingService {
     console.log("pmodal trigged")
     return this.dataParcel.asObservable();
   }
-
+  
   unsub(){
     this.data.unsubscribe();
     this.dataParcel.unsubscribe();

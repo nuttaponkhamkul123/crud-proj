@@ -23,6 +23,7 @@ export class Measures {
 export class ParcelCrudService {
   REST_API : String = 'http://localhost:8000/api';
   httpHeaders = new HttpHeaders().set('Content-Type' , 'application/json');
+  
 
   constructor(private httpClient : HttpClient) { }
   //Add Parcel 
