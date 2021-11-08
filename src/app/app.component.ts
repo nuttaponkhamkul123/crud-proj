@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { Router,NavigationEnd,Event } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription  } from 'rxjs';

@@ -39,11 +39,11 @@ parcelRoute.route('/fetch-parcel/:id').get((req,res) =>{
 parcelRoute.route('/update-parcel/:id').put((req,res,next) =>{
     Parcel.findByIdAndUpdate(req.params.id,{
         $set : req.body
-    }, (err,data) =>{
+    },{new : true}, (err,data) =>{
         if(err) return next(err);
         else{
             res.json(data);
-            console.log("Parcel Updated");
+            console.log(req.body);
         }
     })
 })

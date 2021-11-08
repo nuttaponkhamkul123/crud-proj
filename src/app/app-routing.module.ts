@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddParcelComponent } from './components/add-parcel/add-parcel.component';
-import { ParcelDetailComponent } from './components/parcel-detail/parcel-detail.component';
+import { ParcelDetailComponent } from './components/modal/parcel-detail/parcel-detail.component';
 import { ParcelListComponent } from './components/parcel-list/parcel-list.component';
 import { MeasureComponent } from  './components/measure/measure.component';
 

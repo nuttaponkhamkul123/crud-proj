@@ -1,11 +1,13 @@
 import { Component,Input, OnInit, ViewChild } from '@angular/core';
 import {NgbModal, NgbActiveModal,NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder,Validators } from '@angular/forms';
-import {  ParcelCrudService } from '../../services/parcel-crud.service';
+import {  ParcelCrudService } from '../../../services/parcel-crud.service';
 import { v4 as uuidv4 } from 'uuid';
 import { PassingService } from 'src/app/services/passing.service';
 import { Subscription } from 'rxjs';
 import { skip } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { NgZone } from '@angular/core';
 
 
 @Component({
@@ -23,7 +25,8 @@ export class ModalComponent implements OnInit {
   constructor(private fb : FormBuilder
     ,private modalService : NgbModal
     ,private parcelCrudService : ParcelCrudService
-    ,private transferData : PassingService) {
+    ,private transferData : PassingService
+    ) {
     //skip is use to prevent modal trigger on start
       this.clickEvent = this.transferData.dataMsg.pipe(skip(1)).subscribe((res)=>{
         this.modalOpen(res)
@@ -34,10 +37,7 @@ export class ModalComponent implements OnInit {
   addMeasureGroup = this.fb.group ({
     measureName : ['',Validators.required]
   })
-  ngOnInit(): void {
-    
-    
-  }
+  ngOnInit(): void {}
   
   modalOpen(id? : any){
     
@@ -65,24 +65,27 @@ export class ModalComponent implements OnInit {
   }
   saveMeasure(){
     if(this.currentMid !== undefined){
+      ///////edit current measure
       let mName = this.addMeasureGroup.value.measureName
+      //set current id as object
       this.currentEditMeasure = {
         _id : this.currentMid,
         measureName : mName
       }
-      console.log(this.currentEditMeasure)
+      //send request to backend and update measure value by id and measure name
       this.parcelCrudService.updateMeasure(this.currentEditMeasure._id, {'measureName' : this.currentEditMeasure.measureName}).subscribe((res) => {});
-      
+      this.transferData.refreshModal();
     }else{
-      console.log("ud val")
+
+     ///// add measure section
       this.currentEditMeasure = {
         _id : uuidv4(),
         measureName : this.addMeasureGroup.value.measureName
       }
       
-      this.parcelCrudService.addMeasure(this.currentEditMeasure).subscribe((res) => {
-        
-      });
+      ///add measure and refresh list
+      this.parcelCrudService.addMeasure(this.currentEditMeasure).subscribe((res) => {});
+      this.transferData.refreshModal();
     }
     
     

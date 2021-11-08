@@ -36,6 +36,7 @@ export class ParcelCrudService {
             catchError(this.errorHandler)
           )
   }
+  //add measure
   addMeasure(obj : Measures) : Observable<any> {
         console.log('adding Measure : ' + obj)
         let API_URL = `${this.REST_API}/measures/add-measure`;
@@ -68,6 +69,8 @@ export class ParcelCrudService {
         catchError(this.errorHandler)
       )
     }
+
+  //get measure specifically 
   getMeasure(id : any) : Observable<any> {
     
     return this.httpClient.get(`${this.REST_API}/measures/fetch-measure/${id}`,
@@ -83,6 +86,7 @@ export class ParcelCrudService {
 
   //update Parcel
   updateParcel(id : any , newData : any) : Observable<any> {
+    console.log(newData)
     return this.httpClient.put(`${this.REST_API}/update-parcel/${id}`,newData ,{
       headers : this.httpHeaders
     }).pipe(
@@ -102,6 +106,14 @@ export class ParcelCrudService {
   //Delete Parcel from id
   deleteParcel(id : any ) : Observable<any>{
     return this.httpClient.delete(`${this.REST_API}/delete-parcel/${id}` ,{
+      headers : this.httpHeaders
+    }).pipe(
+      catchError(this.errorHandler)
+    )
+  }
+  //Delete Measure from id
+  deleteMeasure(id : any ) : Observable<any>{
+    return this.httpClient.delete(`${this.REST_API}/measures/delete-measure/${id}` ,{
       headers : this.httpHeaders
     }).pipe(
       catchError(this.errorHandler)

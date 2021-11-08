@@ -1,8 +1,10 @@
 <div>
   
   <button type="button" class="btn btn-primary" data-toggle="modal" (click) = "open();$event.preventDefault()">Add</button>
+  <br>
+  <br>
     <table class="table">
-        <thead class = "thead-dark">
+        <thead class = "table-dark">
             <tr>
                 <th>ลำดับ</th>
                 <th>หน่วยวัด</th>
@@ -13,7 +15,7 @@
             <tr *ngFor= "let elem of measures; index as i">
                 <td>{{i+1}}</td>
                 <td>{{elem.measureName}}</td>
-                <td><a href="javascript:void(0)" data-toggle="modal" data-target="#emModal" (click) = "open(elem._id);">Edit</a>&nbsp;<a href="javascript:void(0)">delete</a></td>
+                <td><a href="javascript:void(0)" class = "btn btn-secondary" data-toggle="modal" data-target="#emModal" (click) = "open(elem._id);">Edit</a>&nbsp;<a class =  "btn btn-danger" href="javascript:void(0)" (click) = "delete(elem._id);">delete</a></td>
             </tr>
         </tbody>
     </table>
