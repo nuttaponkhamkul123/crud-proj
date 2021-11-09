@@ -70,7 +70,7 @@ export class MeasureModalComponent implements OnInit {
     })
   }
   saveMeasure(mode? : any){
-    console.log("current : " + this.currentMid)
+    
     if(mode){
       ///////edit current measure
       let mName = this.addMeasureGroup.value.measureName
@@ -91,7 +91,7 @@ export class MeasureModalComponent implements OnInit {
     }else{
 
      ///// add measure section
-     console.log("add value")
+      console.log("add value")
       this.currentEditMeasure = {
         _id : uuidv4(),
         measureName : this.addMeasureGroup.value.measureName

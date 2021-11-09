@@ -18,15 +18,11 @@ export class MeasureComponent implements OnInit {
   public index! : number;
   private refreshList! : Subscription;
 
-  constructor(private modalService : NgbModal
-             ,private fb : FormBuilder
-             ,private parcelCrudService : ParcelCrudService
-             ,private transferData : PassingService) { 
-
-              //to update data from modal component
-              this.refreshList! = this.transferData.getrefreshModal().subscribe(()=>{
+  constructor(private modalService : NgbModal,private fb : FormBuilder,private parcelCrudService : ParcelCrudService,private transferData : PassingService) { 
+    //to update data from modal component
+        this.refreshList! = this.transferData.getrefreshModal().subscribe(()=>{
                 this.refresh();
-              })
+        })
     
   }
   
@@ -34,17 +30,19 @@ export class MeasureComponent implements OnInit {
     this.parcelCrudService.fetchMeasures().subscribe((res) => {
       this.measures! = res;
     })
-    this.transferData.getrefreshModal().subscribe((res)=>{
-      
-    });
+    //refresh list of measure dropdown
+    this.transferData.getrefreshModal().subscribe((res)=>{});
     
   }
   refresh(){
+    //get data from measure schema
     this.parcelCrudService.fetchMeasures().subscribe((res) => {
       this.measures! = res;
     })
   }
   
+
+  //open modal function
   open(id? : any){
     console.log(id)
     if(id === undefined){

@@ -15,26 +15,31 @@ export class PassingService {
     this.data.next(val);
     
   }
+  //open parcel modal
   triggerModalParcel(val : any){
-    //console.log("pval : "  + JSON.stringify(val))
     this.dataParcel.next(val);
   }
+  //get measure modal to component which it subscribed to
   getTriggerModal() : Observable<any>{
     return this.data.asObservable();
   }
-
+  //get parcel modal to component which it subscribed to
   getTriggerParcelModal() : Observable<any>{
     return this.dataParcel.asObservable();
   }
+  //refresh modal data
   getrefreshModal() : Observable<any> {
     return this.dataModal.asObservable();
   }
+  //refresh modal data
   refreshModal(){
     this.dataModal.next(true);
   }
+  //refresh measure list
   refreshMeasureList(){
       this.dataMList.next('test');
   }
+  //refresh measure list
   getRefreshMeasureList(){
     return this.dataMList.asObservable();
   }

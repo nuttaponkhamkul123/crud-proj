@@ -25,9 +25,8 @@ export class ParcelDetailComponent implements OnInit {
   
   constructor(private modalService : NgbModal,private transferData : PassingService,private fb : FormBuilder,private modalNg : NgbModal, private parcelCrud : ParcelCrudService) {
                 this.clickEvent = this.transferData.getTriggerParcelModal().pipe(skip(1)).subscribe((val)=>{
-                  //set value of inputs to parcel list using pipe and subscribe
+                  //set value of inputs to parcel list using pipe and subscribe(skip 1 time to prevent modal trigger on start)
                   this.currentParcelID = val._id;
-                  
                   this.editParcelGroup.setValue({
                     parcelName : val.parcelName,
                     publicName : val.publicParcelName,
@@ -42,14 +41,13 @@ export class ParcelDetailComponent implements OnInit {
                 })
 
   }
+
+   //create formbuilder group for gathering data from input
   editParcelGroup = this.fb.group({
     parcelName : ['test', Validators.required],
     publicName : ['test_public' , Validators.required],
     selMeasure : new FormControl('ไม่มีหน่วยวัด')
      })
-
-  //create formbuilder group for gathering data from input
-  
 
 
   ngOnInit(): void {

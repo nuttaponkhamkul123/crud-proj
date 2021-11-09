@@ -26,8 +26,7 @@ export class ParcelCrudService {
   
 
   constructor(private httpClient : HttpClient) { }
-  //Add Parcel 
-
+  //add Parcel 
   addParcel(obj : Parcel) : Observable<any> {
         console.log('adding Parcel : ' + obj)
         let API_URL = `${this.REST_API}/add-parcel`;
@@ -103,7 +102,7 @@ export class ParcelCrudService {
     )
   }
 
-  //Delete Parcel from id
+  //delete Parcel from id
   deleteParcel(id : any ) : Observable<any>{
     return this.httpClient.delete(`${this.REST_API}/delete-parcel/${id}` ,{
       headers : this.httpHeaders
@@ -111,7 +110,7 @@ export class ParcelCrudService {
       catchError(this.errorHandler)
     )
   }
-  //Delete Measure from id
+  //delete Measure from id
   deleteMeasure(id : any ) : Observable<any>{
     return this.httpClient.delete(`${this.REST_API}/measures/delete-measure/${id}` ,{
       headers : this.httpHeaders
