@@ -17,6 +17,7 @@ import { skip } from 'rxjs/operators';
 export class ParcelDetailComponent implements OnInit {
   @ViewChild('apModal') modal : any;
   private clickEvent! : Subscription;
+  public mList :any = [];
   private currentParcelID! : string;
   constructor(private modalService : NgbModal,private transferData : PassingService,private fb : FormBuilder,private modalNg : NgbModal, private parcelCrud : ParcelCrudService) {
                 this.clickEvent = this.transferData.getTriggerParcelModal().pipe(skip(1)).subscribe((val)=>{
@@ -25,7 +26,7 @@ export class ParcelDetailComponent implements OnInit {
                   this.editParcelGroup.setValue({
                     parcelName : val.parcelName,
                     publicName : val.publicParcelName,
-                    measureName : val.measureName
+                    selMeasure : val.measureName
                   })  
                   this.modalNg.open(this.modal);
                 })
@@ -37,9 +38,13 @@ export class ParcelDetailComponent implements OnInit {
   editParcelGroup = this.fb.group({
            parcelName : ['test', Validators.required],
            publicName : ['test_public' , Validators.required],
-           measureName : ['test_measure' , Validators.required]
+           selMeasure : ['test_measure' , Validators.required]
             })
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.parcelCrud.fetchMeasures().subscribe((res)=>{
+      this.mList = res
+    })
+  }
   saveParcel(){
   
 
@@ -47,7 +52,7 @@ export class ParcelDetailComponent implements OnInit {
     let obj = {
       name : this.editParcelGroup.value.parcelName,
       publicName : this.editParcelGroup.value.publicName,
-      measure : this.editParcelGroup.value.measureName
+      measure : this.editParcelGroup.value.selMeasure
     }
     
     this.parcelCrud.updateParcel(this.currentParcelID,obj).subscribe((res)=>{});

@@ -13,7 +13,10 @@
         <label for="publicName">Public Name </label>
         <input id="publicName"  class = "form-control"type="text" formControlName="publicName">
         <label for="measureName">measure </label>
-        <input id="measureName"  class = "form-control"type="text" formControlName="measureName">
+        <select class="form-select" formControlName = "selMeasure">
+          <option value = "No Measure" [selected] = "true">เลือกหน่วยวัด</option>
+          <option *ngFor = "let m of mList;let i = index" [attr.data-index]="i" [value] = "m.measureName" >{{m.measureName}}</option>
+        </select><br>
       </form>
     </div>
     <div class="modal-footer">
