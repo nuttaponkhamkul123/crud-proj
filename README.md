@@ -33,6 +33,7 @@ Coded with Angular(my first time) as frontend and NodeJS as backend
 
 ## How to run project
 1.you need to download this project as a zip and extract to your desire directory
+
 2.cd to your project directory using
 ```
 cd yourdirectory
