@@ -28,9 +28,13 @@ export class AddParcelComponent implements OnInit {
     })
   
   ngOnInit(): void {
+    
+    //receive measure dropdown update
     this.refrestList = this.passingService.getRefreshMeasureList().subscribe(()=>{
         this.updateList()
     })
+
+    //update measure dropdown list
     this.updateList()
   }
   updateList(){
@@ -39,14 +43,14 @@ export class AddParcelComponent implements OnInit {
     })
   }
   onSubmit(){
+
+    //create object to send to backend
     let obj = new Parcel();
     obj._id = uuidv4();
     obj.name = this.addParcelForm.get("parcelName")!.value;
     obj.publicName = this.addParcelForm.get("publicParcelName")!.value;
     obj.quantity = this.addParcelForm.get("quantity")!.value;
     obj.measure = this.addParcelForm.get("selMeasure")!.value;
-    
-    
     
     this.parcelCrudService.addParcel(obj).subscribe(() => {
       console.log("added parcel")

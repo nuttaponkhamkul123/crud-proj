@@ -29,9 +29,6 @@ export class ParcelListComponent implements OnInit {
   }
   deleteParcel(id : string){
     this.pcs.deleteParcel(id).subscribe((res) => res)
-
-
-
     //delete parcel and refetch data
     this.pcs.fetchParcels().subscribe((res) => 
         this.allItems = res)
