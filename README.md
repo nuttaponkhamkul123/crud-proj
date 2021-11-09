@@ -2,8 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
-# crud-proj
-
 ## About
 This Project is about parcel management as CRUD(Create , Read, Update and Delete)
 Coded with Angular(my first time) as frontend and NodeJS as backend
