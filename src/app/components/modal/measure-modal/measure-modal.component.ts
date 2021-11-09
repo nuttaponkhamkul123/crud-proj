@@ -1,5 +1,5 @@
 import { Component,Input, OnInit, ViewChild } from '@angular/core';
-import {NgbModal, NgbActiveModal,NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, NgbActiveModal,NgbModalRef, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder,Validators } from '@angular/forms';
 import {  ParcelCrudService } from '../../../services/parcel-crud.service';
 import { v4 as uuidv4 } from 'uuid';
@@ -22,6 +22,7 @@ export class MeasureModalComponent implements OnInit {
   private currentEditMeasure :any ;
   private clickEvent! : Subscription;
   private currentMid! : string;
+  private modalOption : NgbModalOptions;
   constructor(private fb : FormBuilder
     ,private modalService : NgbModal
     ,private parcelCrudService : ParcelCrudService
@@ -31,24 +32,26 @@ export class MeasureModalComponent implements OnInit {
       this.clickEvent = this.transferData.dataMsg.pipe(skip(1)).subscribe((res)=>{
         this.modalOpen(res)
       })
+      this.modalOption = {
+        backdrop : 'static',
+        keyboard : false
+      }
     }
 
-
+  //create formGroup for formbuilder
   addMeasureGroup = this.fb.group ({
     measureName : ['',Validators.required]
   })
   ngOnInit(): void {}
   
   modalOpen(id? : any){
-    
     if(id.id === undefined){
       //Open modal without ID(For add measure)
-      
-      this.modalService.open(this.addModal)
+      this.modalService.open(this.addModal,this.modalOption)
     }else{
       //Open modal with id(For edit measure)
-      console.log(id.id)
       this.parcelCrudService.getMeasure(id.id).subscribe((res) =>{
+          //set value to response data from backend
           this.addMeasureGroup.setValue({
           measureName : res['measureName']
           
@@ -57,14 +60,18 @@ export class MeasureModalComponent implements OnInit {
       })
       
       //console.log(this.addMeasureGroup.value.measureName)
-      this.modalService.open(this.editModal);
-      
-      
+      this.modalService.open(this.editModal,this.modalOption);
     }
-      
   }
-  saveMeasure(){
-    if(this.currentMid !== undefined){
+  closeModal(){
+    this.currentMid != undefined
+    this.addMeasureGroup.setValue({
+      measureName : ''
+    })
+  }
+  saveMeasure(mode? : any){
+    console.log("current : " + this.currentMid)
+    if(mode){
       ///////edit current measure
       let mName = this.addMeasureGroup.value.measureName
       //set current id as object
@@ -74,10 +81,17 @@ export class MeasureModalComponent implements OnInit {
       }
       //send request to backend and update measure value by id and measure name
       this.parcelCrudService.updateMeasure(this.currentEditMeasure._id, {'measureName' : this.currentEditMeasure.measureName}).subscribe((res) => {});
+      this.currentMid != undefined;
+      this.currentEditMeasure = [];
+      this.addMeasureGroup.setValue({
+        measureName : ''
+      })
       this.transferData.refreshModal();
+      this.transferData.refreshMeasureList()
     }else{
 
      ///// add measure section
+     console.log("add value")
       this.currentEditMeasure = {
         _id : uuidv4(),
         measureName : this.addMeasureGroup.value.measureName
@@ -86,13 +100,12 @@ export class MeasureModalComponent implements OnInit {
       ///add measure and refresh list
       this.parcelCrudService.addMeasure(this.currentEditMeasure).subscribe((res) => {});
       this.transferData.refreshModal();
+      this.transferData.refreshMeasureList()
     }
     
     
   }
 
-  unsub(){
-    this.transferData.unsub();
-  }
+ 
 
 }

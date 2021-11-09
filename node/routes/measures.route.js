@@ -45,7 +45,6 @@ measuresRoute.route('/fetch-measure/:id').get((req,res) =>{
         if(err) return next(err);
         else {
             res.json(data)
-            
         }
         
     })
@@ -63,7 +62,6 @@ measuresRoute.route('/update-measure/:id').put((req,res,next) =>{
         }else{
             
             res.json(data);
-            console.log(req.body)
         }
     })
 })

@@ -46,10 +46,12 @@ export class MeasureComponent implements OnInit {
   }
   
   open(id? : any){
+    console.log(id)
     if(id === undefined){
       this.transferData.triggerModal({id : undefined});
     }else{
       this.transferData.triggerModal({id : id});
+      
     }
   }
   delete(id : any){
@@ -57,9 +59,7 @@ export class MeasureComponent implements OnInit {
       this.refresh();
     });
   }
-  unsub(){
-    this.transferData.unsub();
-  }
+  
   
   
 }

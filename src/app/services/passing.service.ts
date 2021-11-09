@@ -9,6 +9,7 @@ export class PassingService {
   private data = new BehaviorSubject('');
   private dataParcel = new BehaviorSubject('');
   private dataModal = new BehaviorSubject(false);
+  private dataMList = new BehaviorSubject('')
   dataMsg = this.data.asObservable();
   triggerModal(val:any){
     this.data.next(val);
@@ -23,7 +24,6 @@ export class PassingService {
   }
 
   getTriggerParcelModal() : Observable<any>{
-    console.log("pmodal trigged")
     return this.dataParcel.asObservable();
   }
   getrefreshModal() : Observable<any> {
@@ -32,11 +32,13 @@ export class PassingService {
   refreshModal(){
     this.dataModal.next(true);
   }
-  
-  unsub(){
-    this.data.unsubscribe();
-    this.dataParcel.unsubscribe();
+  refreshMeasureList(){
+      this.dataMList.next('test');
   }
+  getRefreshMeasureList(){
+    return this.dataMList.asObservable();
+  }
+  
   
   
 }
