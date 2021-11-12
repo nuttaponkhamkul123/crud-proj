@@ -18,7 +18,9 @@ cd yourdirectory
 npm install
 ```
 to install all dependencies
+
 4.run ng serve to run angular frontend
+
 5.create new terminal using VS code or just using new cmd window and typing
 ```
 cd node
