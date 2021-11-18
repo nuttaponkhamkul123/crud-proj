@@ -12,12 +12,38 @@ ul li{
     padding-bottom:2rem;
     padding-top:2rem;
     font-weight: bolder;
+    overflow :hidden;
+    position:relative;
 }
 
 ul li:hover {
-    background-color:rgb(175, 185, 201);
+    /* background-color:rgb(175, 185, 201); */
     cursor:pointer;
+    /* color:black; */
+    animation : fadeIn 0.3s;
+    
 }
+ul li:hover:after{
+    opacity: 1;
+    left:100%;
+    
+}
+ul li:after{
+    content : "";
+    width: 150%;
+    position:absolute;
+    background-color:rgb(82, 183, 247);
+    opacity: 0;
+    border-left:10px solid transparent;
+    border-bottom:10px solid transparent;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    transition: all .5s;
+    
+}
+
 .is-active > li{
     background-color:rgb(37, 97, 194);
 }
@@ -31,4 +57,14 @@ ul li:hover {
 .sidebar a {
     text-decoration:none;
     color:white;
+}
+
+/* keyframes */
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
