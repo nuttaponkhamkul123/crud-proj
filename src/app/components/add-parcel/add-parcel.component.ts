@@ -6,6 +6,8 @@ import { Validators } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
 import { Subscription } from 'rxjs';
 import { PassingService } from 'src/app/services/passing.service';
+import { AlertServiceService } from 'src/app/services/alert-service.service';
+import { ThrowStmt } from '@angular/compiler';
 @Component({
   selector: 'app-add-parcel',
   templateUrl: './add-parcel.component.html',
@@ -16,7 +18,7 @@ export class AddParcelComponent implements OnInit {
   public mList : any = [];
   private refrestList! : Subscription;
   constructor(private parcelCrudService : ParcelCrudService,
-    private formBuilder : FormBuilder,private router : Router,private passingService : PassingService) { 
+    private formBuilder : FormBuilder,private router : Router,private passingService : PassingService,private alertService : AlertServiceService) { 
     
   }
   //all the field is required 
@@ -53,8 +55,10 @@ export class AddParcelComponent implements OnInit {
     obj.measure = this.addParcelForm.get("selMeasure")!.value;
     
     this.parcelCrudService.addParcel(obj).subscribe(() => {
-      console.log("added parcel")
+      console.log("added parcel") 
+      this.alertService.toggleAlert();
       this.router.navigateByUrl('/');
+      
     });
   }
   
