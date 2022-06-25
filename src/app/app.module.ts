@@ -13,6 +13,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MeasureComponent } from './components/measure/measure.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MeasureModalComponent } from './components/modal/measure-modal/measure-modal.component';
+import { ParcelHistoryComponent } from './components/parcel-history/parcel-history.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MeasureModalComponent } from './components/modal/measure-modal/measure-
     ParcelListComponent,
     SidebarComponent,
     MeasureComponent,
-    MeasureModalComponent
+    MeasureModalComponent,
+    ParcelHistoryComponent
   ],
   imports: [
     BrowserModule,

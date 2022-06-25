@@ -72,7 +72,9 @@ export class ParcelDetailComponent implements OnInit {
     }
     
     //send object into database
-    this.parcelCrud.updateParcel(this.currentParcelID,obj).subscribe((res)=>{});
+    this.parcelCrud.updateParcel(this.currentParcelID,obj).subscribe((res)=>{
+      this.transferData.parcelList$.next();
+    });
 
     //send refresh request to service and make parcel list refreshed
     this.transferData.refreshModal();

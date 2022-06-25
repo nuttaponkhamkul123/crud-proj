@@ -1,13 +1,14 @@
 import { Component, OnInit,NgZone } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Parcel, ParcelCrudService } from '../../services/parcel-crud.service';
+import { ParcelCrudService } from '../../services/parcel-crud.service';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
 import { Subscription } from 'rxjs';
 import { PassingService } from 'src/app/services/passing.service';
 import { AlertServiceService } from 'src/app/services/alert-service.service';
-import { ThrowStmt } from '@angular/compiler';
+import { Parcel } from 'src/app/models/parcel.model';
+
 @Component({
   selector: 'app-add-parcel',
   templateUrl: './add-parcel.component.html',
@@ -25,6 +26,7 @@ export class AddParcelComponent implements OnInit {
     addParcelForm = this.formBuilder.group({
       parcelName : ['',Validators.required],
       publicParcelName : ['',Validators.required],
+      parcel_number : ['' , Validators.required],
       quantity: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       selMeasure : ['No Measure' , Validators.required]
     })
@@ -47,15 +49,16 @@ export class AddParcelComponent implements OnInit {
   onSubmit(){
 
     //create object to send to backend
-    let obj = new Parcel();
-    obj._id = uuidv4();
-    obj.name = this.addParcelForm.get("parcelName")!.value;
-    obj.publicName = this.addParcelForm.get("publicParcelName")!.value;
-    obj.quantity = this.addParcelForm.get("quantity")!.value;
-    obj.measure = this.addParcelForm.get("selMeasure")!.value;
+    const obj : Parcel = {
+      _id :uuidv4(),
+      parcel_number : this.addParcelForm.get("parcel_number")?.value,
+      name : this.addParcelForm.get("parcelName")!.value,
+      publicName : this.addParcelForm.get("publicParcelName")!.value,
+      quantity : this.addParcelForm.get("quantity")!.value,
+      measure : this.addParcelForm.get("selMeasure")!.value,
+    };
     
     this.parcelCrudService.addParcel(obj).subscribe(() => {
-      console.log("added parcel") 
       this.alertService.toggleAlert();
       this.router.navigateByUrl('/');
       

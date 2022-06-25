@@ -4,9 +4,18 @@ import { AddParcelComponent } from './components/add-parcel/add-parcel.component
 import { ParcelDetailComponent } from './components/modal/parcel-detail/parcel-detail.component';
 import { ParcelListComponent } from './components/parcel-list/parcel-list.component';
 import { MeasureComponent } from  './components/measure/measure.component';
+import { ParcelHistoryComponent } from './components/parcel-history/parcel-history.component';
 
 
 const routes: Routes = [
+  {
+    path : 'parcel/:id',
+    pathMatch : 'full',
+    component : ParcelHistoryComponent,
+    data : {
+      title : "พัสดุ"
+    }
+  },
   {
     path : '',
     pathMatch : 'full',
@@ -16,7 +25,7 @@ const routes: Routes = [
     path : 'parcel-list',
     component : ParcelListComponent,
     data :{
-      title : "Parcel List"
+      title : "รายชื่อพัสดุ"
     }
 
   },
@@ -24,14 +33,14 @@ const routes: Routes = [
     path : 'add-parcel',
     component : AddParcelComponent,
     data :{
-      title : "Add Parcel"
+      title : "เพิ่มพัสดุ"
     }
   },
   {
     path : 'edit-parcel/:id',
     component : ParcelDetailComponent,
     data :{
-      title : "Edit Parcel"
+      title : "แก้ไขพัสดุ"
     }
   },
   {
@@ -39,7 +48,7 @@ const routes: Routes = [
     pathMatch : 'full',
     component : MeasureComponent,
     data :{
-      title : "Measure List"
+      title : "รายชื่อหน่วยวัด"
     }
   }
 ];

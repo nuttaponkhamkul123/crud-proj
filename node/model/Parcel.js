@@ -12,6 +12,9 @@ let Parcel = new Schema({
     measure : { 
         type : String
     },
+    parcel_number : { 
+        type : String
+    },
     publicName : {
         type : String
     },

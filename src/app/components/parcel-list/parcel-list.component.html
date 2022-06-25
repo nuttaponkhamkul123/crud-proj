@@ -4,6 +4,7 @@
     <table class="table">
         <thead class = "table-dark">
             <tr>
+                <th>รหัสพัสดุ</th>
                 <th>ชื่อ</th>
                 <th>ชื่อเป็นทางการ</th>
                 <th>หน่วยวัด</th>
@@ -12,13 +13,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor = 'let parcel of allItems'>
-                <td>{{parcel.name}}</td>
-                <td>{{parcel.publicName}}</td>
-                <td>{{parcel.measure}}</td>
-                <td>{{parcel.quantity}}</td>
-                <td><a href="javascript:void(0)" class = "btn btn-danger" (click) = "deleteParcel(parcel._id)">ลบ</a>&nbsp;<a href="javascript:void(0)" class = "btn btn-secondary" (click) = "editParcel({ _id : parcel._id , parcelName :parcel.name, publicParcelName : parcel.publicName, measureName : parcel.measure })" >แก้ไข</a></td>
-            </tr>
+            <ng-container *ngFor = 'let parcel of allItems' >
+                <tr class="parcel-list" (click)="showDetail(parcel)">
+                    <td>{{parcel.parcel_number ? parcel.parcel_number : ''}}</td>
+                    <td>{{parcel.name}}</td>
+                    <td>{{parcel.publicName}}</td>
+                    <td>{{parcel.measure}}</td>
+                    <td>{{parcel.quantity}}</td>
+                    <td><a href="javascript:void(0)" class = "btn btn-danger" (click)="deleteParcel(parcel._id)">ลบ</a>&nbsp;<a href="javascript:void(0)" class = "btn btn-secondary" (click) = "editParcel({ _id : parcel._id , parcelName :parcel.name, publicParcelName : parcel.publicName, measureName : parcel.measure })" >แก้ไข</a></td>
+                </tr>
+            </ng-container>
         </tbody>
             
         

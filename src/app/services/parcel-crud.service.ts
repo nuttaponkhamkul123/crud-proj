@@ -2,16 +2,9 @@ import { Injectable } from '@angular/core';
 import {catchError, map} from 'rxjs/operators';
 import { Observable, observable, throwError } from 'rxjs';
 import { HttpClient,HttpHeaders,HttpErrorResponse } from '@angular/common/http';
-import { ThrowStmt } from '@angular/compiler';
+import { Parcel } from '../models/parcel.model';
 
-export class Parcel { 
-  _id !: String;
-  name !: String;
-  publicName !: String;
-  measure !: String;
-  quantity !: Number;
 
-}
 export class Measures { 
   _id !: String;
   measureName !: String;
@@ -45,9 +38,9 @@ export class ParcelCrudService {
           )
   }
   //fetch all parcels
-  fetchParcels() : Observable<any>{
+  fetchParcels() : Observable<Parcel[]>{
     
-    return this.httpClient.get(`${this.REST_API}`)
+    return this.httpClient.get(`${this.REST_API}`) as Observable<Parcel[]>
   
   }
   fetchMeasures() : Observable<any>{
@@ -90,7 +83,7 @@ export class ParcelCrudService {
       headers : this.httpHeaders
     }).pipe(
       catchError(this.errorHandler)
-    )
+    );
   }
 
   //update Measure

@@ -1,6 +1,5 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject,Observable } from 'rxjs';
+import { BehaviorSubject,Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +10,7 @@ export class PassingService {
   private dataModal = new BehaviorSubject(false);
   private dataMList = new BehaviorSubject('')
   dataMsg = this.data.asObservable();
+  parcelList$ = new Subject<void>();
   triggerModal(val:any){
     this.data.next(val);
     
@@ -23,6 +23,7 @@ export class PassingService {
   getTriggerModal() : Observable<any>{
     return this.data.asObservable();
   }
+  
   //get parcel modal to component which it subscribed to
   getTriggerParcelModal() : Observable<any>{
     return this.dataParcel.asObservable();

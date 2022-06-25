@@ -6,3 +6,13 @@
 .add-alert{
     transition : all .8s;
 }
+
+.parcel-list{
+    
+}
+
+.parcel-list:hover{
+    cursor:pointer;
+    background-color: rgb(37, 97, 194);
+    color: #fafafa;
+}

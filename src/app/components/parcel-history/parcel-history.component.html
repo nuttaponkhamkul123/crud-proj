@@ -1,0 +1,63 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            
+            <label for="parcel-detail-number" class="w-100">รหัสพัสดุ
+                <input class="form-control" type="text" id = "parcel-detail-number">
+            </label>
+            
+        </div>
+        <div class="col-sm-6">
+            
+            <label for="parcel-detail-measure" class="w-100">หน่วยวัด
+                <input class="form-control" type="text" id = "parcel-detail-measure">
+            </label>
+        </div>
+        <div class="col-sm-6">
+            
+            <label for="parcel-detail-public-name" class="w-100">ชื่อพัสดุ (เป็นทางการ)
+                <input class="form-control" type="text" id = "parcel-detail-public-name">
+            </label>
+        </div>
+        <div class="col-sm-6">
+           
+            <label for="parcel-detail-name" class="w-100"> ชื่อพัสดุ (ไม่เป็นทางการ)
+                <input class="form-control" type="text" id = "parcel-detail-name">
+            </label>
+        </div>
+    </div>
+    <div class="button-section">
+
+        <button type="button" class="btn btn-success">รับ-จ่าย พัสดุ</button>
+        <button type="button" class="btn btn-primary">ส่งออกไฟล์ Excel</button>
+
+    </div>
+
+    <div>
+        <table class="table">
+            <thead class = "table-dark">
+                <tr>
+                    <th>ว/ด/ป</th>
+                    <th>เอกสารรับ-ส่ง</th>
+                    <th>จำนวนที่มี</th>
+                    <th>รับ</th>
+                    <th>จ่าย</th>
+                    <th>คงเหลือ</th>
+                    <th>หมายเหตุ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <ng-container *ngFor = 'let parcel of allItems' >
+                    
+                </ng-container> -->
+            </tbody>
+                
+            
+        </table>
+
+
+
+    </div>
+    <!-- <div class="row"></div> -->
+</div>
